@@ -5,11 +5,10 @@ import { Cache } from 'cache-manager';
 
 @Injectable()
 export class ExchangeRateService {
-  private readonly apiUrl =
-    'https://ldktuanhf9.execute-api.eu-central-1.amazonaws.com/api';
-  private readonly apiKey = 'DInGz8W0Wr8t0fYAY21ddL2JMmZ2uHT1hxAxUSTa';
+  private readonly apiUrl = process.env.API_URL;
+  private readonly apiKey = process.env.API_KEY;
   private readonly cacheKey = 'exchange_rate';
-  private readonly cacheTTL = 60 * 1000; // in seconds
+  private readonly cacheTTL = 60 * 1000; // in miliseconds
 
   constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
 
